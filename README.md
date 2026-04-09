@@ -42,7 +42,9 @@ npm run dev
 ```bash
 cd backend
 npm install
-node server.js
+npm run dev      # development (auto-restart with nodemon)
+# or
+npm start        # production
 ```
 
 ## Scripts
@@ -52,3 +54,5 @@ node server.js
 | `npm run dev` | Start frontend dev server at `http://localhost:5173` |
 | `npm run build` | Build frontend for production |
 | `npm run preview` | Preview the production build |
+| `npm run dev` (backend) | Start backend with nodemon (auto-restart) |
+| `npm start` (backend) | Start backend for production |
