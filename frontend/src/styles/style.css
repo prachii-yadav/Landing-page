@@ -1,0 +1,1189 @@
+/* =============================================================
+   TASKMAN — DESIGN SYSTEM
+============================================================= */
+:root {
+  --blue: #0634FF;
+  --blue-light: #8097FF;
+  --blue-dark: #0428cc;
+  --yellow: #FFD666;
+  --yellow-alt: #FFBC00;
+  --navy: #3A4151;
+  --white: #ffffff;
+  --bg-light: #F6F8FA;
+  --text-dark: #111827;
+  --text-gray: #9ca3af;
+  --text-mid: #6b7280;
+  --border: #e5e7eb;
+  --shadow-color: rgba(31, 48, 93, 0.22);
+  --font: 'Poppins', sans-serif;
+  --font-mono: 'Roboto Mono', monospace;
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --max-width: 1200px;
+  --transition: 0.3s ease;
+}
+
+/* =============================================================
+   RESET
+============================================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--white);
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: var(--font);
+  cursor: pointer;
+  border: none;
+}
+
+/* =============================================================
+   SHARED BUTTON
+============================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 36px;
+  border-radius: 999px;
+  font-family: var(--font);
+  font-size: 1rem;
+  font-weight: 700;
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--blue);
+  color: var(--white);
+  box-shadow: 0 6px 24px rgba(47, 85, 232, 0.35);
+}
+
+.btn-primary:hover {
+  background: var(--blue-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(47, 85, 232, 0.45);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-dark);
+  border: 1.5px solid var(--text-dark);
+}
+
+.btn-outline:hover {
+  background: var(--text-dark);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* =============================================================
+   NAVBAR
+============================================================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 60px;
+  background: transparent;
+  transition: background var(--transition), box-shadow var(--transition);
+}
+
+.navbar-scrolled {
+  box-shadow: none;
+}
+
+.nav-logo {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: -0.5px;
+}
+
+.navbar-button {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+.navbar-button:hover {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* =============================================================
+   HERO SECTION
+============================================================= */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(360px, 1fr) minmax(520px, 1.35fr);
+  overflow: hidden;
+}
+
+/* Left white panel */
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 280px 60px 80px 140px;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--text-dark);
+  letter-spacing: -1.5px;
+  margin-bottom: 24px;
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  color: var(--text-gray);
+  line-height: 1.8;
+  max-width: 420px;
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
+
+.hero-form {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.hero-input {
+  flex: 1;
+  min-width: 220px;
+  padding: 16px 28px;
+  border-radius: 999px;
+  border: 1.5px solid var(--border);
+  font-family: var(--font);
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  background: var(--white);
+}
+
+.hero-input::placeholder {
+  color: var(--text-gray);
+}
+
+.hero-input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(47, 85, 232, 0.12);
+}
+
+.hero-input.invalid {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+}
+
+/* Right dark panel */
+.hero-right {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+/* ── Hero topbar inside content area ─────────────── */
+.hero-topbar {
+  position: absolute;
+  top: 24px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 0 80px 0 140px;
+}
+
+.hero-brand {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.hero-top-button {
+  padding: 10px 26px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  background: transparent;
+  color: var(--white);
+  box-shadow: none;
+}
+
+.hero-top-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ── Decorative hero shapes (blue + gold + navy) ─────────── */
+.hero-shape {
+  position: absolute;
+  height: 115%;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 1;
+  width: 120%;
+  top: -28%;
+  right: -38%;
+  left: auto;
+  --shape-rot: -40deg;
+  transform: rotate(var(--shape-rot)) scale(2.2);
+  animation: shapeGrowIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.05s forwards;
+}
+
+/* ── Card cluster: sits on top of all shapes ─────────────── */
+.hero-cards-cluster {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* Base card style */
+.hero-card {
+  position: absolute;
+  opacity: 0;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform-origin: center;
+  filter: drop-shadow(0 34px 80px rgba(0, 0, 0, 0.20));
+  transform: rotate(var(--card-rotate, 0deg));
+}
+
+/* Card-1: profile/avatar card — top left */
+.hero-card-1 {
+  width: 60%;
+  top: 5%;
+  right: 18%;
+  left: auto;
+  z-index: 6;
+  --card-rotate: 0deg;
+}
+
+/* Card-2: analytics chart — middle, wide */
+.hero-card-2 {
+  width: 100%;
+  top: 23%;
+  left: -2%;
+  z-index: 5;
+  --card-rotate: 0deg;
+}
+
+/* Card-3: RANK/PROJECTS — lower-left (SVG already pre-rotated) */
+.hero-card-3 {
+  width: 74%;
+  top: 40.5%;
+  left: 2%;
+  z-index: 3;
+  --card-rotate: 0deg;
+}
+
+/* Card-4: numbered task list — right side, tall */
+.hero-card-4 {
+  width: 63%;
+  top: 40.5%;
+  right: -8.7%;
+  left: auto;
+  bottom: auto;
+  z-index: 4;
+  --card-rotate: 0deg;
+}
+
+/* ── Float after entrance ───────────────────────────────── */
+@keyframes heroCardFloat {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(var(--card-rotate, 0deg));
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(var(--card-rotate, 0deg));
+  }
+}
+
+.hero-card-floating {
+  animation: heroCardFloat ease-in-out infinite !important;
+  opacity: 1 !important;
+}
+
+/* WHY section illustration overrides */
+.why-left {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+}
+
+.why-shape-bg {
+  position: absolute;
+  pointer-events: none;
+}
+
+.why-shape-main {
+  position: absolute;
+  width: 110%;
+  top: 10%;
+  left: -45%;
+  z-index: 0;
+  transform: rotate(20deg);
+  opacity: 0;
+}
+
+.why-shape-ellipse {
+  width: 45%;
+  bottom: -10%;
+  left: -8%;
+  z-index: 1;
+}
+
+.why-shape-rect {
+  width: 30%;
+  top: 5%;
+  right: 5%;
+  z-index: 1;
+  opacity: 0.4;
+}
+
+/* Illustrations container */
+.why-illustrations {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.why-illus {
+  width: 100%;
+  border-radius: 12px;
+  opacity: 0;
+  transform: translateX(-60px);
+  position: relative;
+}
+
+/* Learn more arrow as img */
+.learn-more-arrow {
+  width: 36px;
+  height: auto;
+  animation: arrowBounce 1.5s ease-in-out infinite;
+}
+
+/* Signup shape as real SVG image */
+.signup-shape {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: auto;
+  left: auto;
+  height: 100%;
+  width: auto;
+  z-index: 0;
+  transform: translateX(100%);
+  pointer-events: none;
+}
+
+.signup-shape.shape-visible {
+  animation: signupShapeIn 1.0s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* =============================================================
+   LOGOS SECTION
+============================================================= */
+.logos {
+  padding: 60px 80px;
+  display: grid;
+  place-items: center;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  opacity: 0;
+}
+
+.logos-track {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(180px, 240px));
+  justify-content: center;
+  gap: 26px 64px;
+  width: 100%;
+}
+
+.logo-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: grayscale(100%);
+  opacity: 0.65;
+  transition: filter var(--transition), opacity var(--transition);
+  min-width: 120px;
+}
+
+.logo-item:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* =============================================================
+   BENEFITS SECTION
+============================================================= */
+.benefits {
+  padding: 100px 80px;
+  background: var(--white);
+  text-align: center;
+  opacity: 0;
+}
+
+.benefits-title {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 900;
+  color: var(--text-dark);
+  max-width: 560px;
+  margin: 0 auto 72px;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.benefit-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+}
+
+.benefit-card.card-visible {
+  opacity: 1;
+}
+
+.benefit-icon {
+  width: 72px;
+  height: 72px;
+  background: #f0f4ff;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  flex-shrink: 0;
+  opacity: 0;
+}
+
+.benefit-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+  opacity: 0;
+}
+
+.benefit-desc {
+  font-size: 0.95rem;
+  color: var(--text-gray);
+  line-height: 1.7;
+  max-width: 280px;
+}
+
+/* =============================================================
+   WHY SECTION
+============================================================= */
+.why {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 700px;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+}
+
+/* Left decorative panel */
+.why-left {
+  position: relative;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+}
+
+
+
+/* Floating dashboard cards on the left */
+.why-cards {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.why-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 24px 28px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.why-card+.why-card {
+  margin-top: -12px;
+}
+
+.stats-row {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 16px;
+}
+
+.stat-item label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-gray);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--text-dark);
+}
+
+.stat-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #e8edfd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.stat-sub {
+  font-size: 0.82rem;
+  color: var(--text-gray);
+}
+
+.stat-sub span {
+  color: var(--blue);
+  font-weight: 700;
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 14px 0;
+}
+
+.leaderboard-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.leaderboard-sub {
+  font-size: 0.75rem;
+  color: var(--text-gray);
+  margin-bottom: 16px;
+}
+
+.leaderboard-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.leaderboard-row:last-child {
+  border-bottom: none;
+}
+
+.lb-num {
+  font-size: 0.9rem;
+  color: var(--text-gray);
+  width: 18px;
+  flex-shrink: 0;
+}
+
+.lb-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #e5e7eb;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.lb-name {
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex: 1;
+}
+
+.lb-amount {
+  font-size: 0.85rem;
+  color: var(--text-gray);
+}
+
+/* Right text panel */
+.why-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 80px 80px 60px;
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.why-title {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 900;
+  color: var(--text-dark);
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin-bottom: 24px;
+}
+
+.why-desc {
+  font-size: 1rem;
+  color: var(--text-gray);
+  line-height: 1.8;
+  max-width: 420px;
+  margin-bottom: 36px;
+}
+
+.learn-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: gap var(--transition);
+}
+
+.learn-more:hover {
+  gap: 16px;
+}
+
+.learn-more .arrow {
+  width: 32px;
+  height: 10px;
+  background: var(--blue);
+  clip-path: polygon(0 35%, 75% 35%, 75% 0%, 100% 50%, 75% 100%, 75% 65%, 0 65%);
+}
+
+/* =============================================================
+   SIGNUP / CTA SECTION
+============================================================= */
+.signup {
+  padding: 120px 80px;
+  background: var(--white);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+}
+
+/* Blue arc decoration on right */
+.signup-arc {
+  position: absolute;
+  width: 300px;
+  height: 600px;
+  background: var(--blue);
+  border-radius: 999px 0 0 999px;
+  right: -80px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.9;
+  z-index: 0;
+}
+
+.signup-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.signup-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: var(--text-dark);
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+
+.signup-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-gray);
+  margin-bottom: 48px;
+  line-height: 1.7;
+}
+
+.signup-form {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 12px;
+}
+
+.signup-input {
+  flex: 1;
+  min-width: 240px;
+  max-width: 340px;
+  padding: 16px 28px;
+  border-radius: 999px;
+  border: 1.5px solid var(--border);
+  font-family: var(--font);
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.signup-input::placeholder {
+  color: var(--text-gray);
+}
+
+.signup-input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(6, 52, 255, 0.12);
+}
+
+.signup-input.invalid {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+}
+
+.field-error {
+  color: #ef4444;
+  font-size: 0.82rem;
+  margin-top: 6px;
+  display: block;
+  min-height: 18px;
+}
+
+.form-message {
+  margin-top: 16px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.form-message.success {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #15803d;
+}
+
+.form-message.error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* =============================================================
+   FOOTER
+============================================================= */
+.footer {
+  padding: 28px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border);
+  font-size: 0.9rem;
+  color: var(--text-gray);
+}
+
+.footer-logo {
+  font-weight: 900;
+  color: var(--text-dark);
+  font-size: 1rem;
+}
+
+/* =============================================================
+   LOGOS SECTION
+============================================================ */
+.logos {
+  padding: 60px 0 0 0;
+  display: block;
+  background: transparent;
+  border-bottom: none;
+  opacity: 0;
+}
+
+.logos-track {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(80px, 1fr));
+  gap: 44px 56px;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 520px;
+}
+
+.logo-item {
+  filter: grayscale(100%);
+  opacity: 0;
+  transition: filter var(--transition), opacity var(--transition);
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 0;
+}
+
+.logo-item.logo-visible {
+  opacity: 0.55;
+  filter: grayscale(100%);
+}
+
+.logo-item:hover {
+  opacity: 0.8;
+  filter: grayscale(80%);
+}
+
+/* RedBull: larger and full colour */
+.logo-item:last-child img {
+  height: 48px;
+}
+
+.logo-item:last-child,
+.logo-item:last-child.logo-visible {
+  filter: grayscale(0%) !important;
+  opacity: 1 !important;
+}
+
+
+
+.signup-shape.shape-visible {
+  animation: signupShapeIn 1.0s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Signup inner: text always visible, no animation */
+.signup-inner {
+  transform: none;
+  opacity: 1;
+}
+
+/* Only the form (button) gets the entrance animation */
+.signup-inner .signup-form {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.signup-inner.content-visible .signup-form {
+  animation: signupFormIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+}
+
+/* Stat number counter — uses Roboto Mono for that code feel */
+.stat-value {
+  font-family: var(--font-mono);
+}
+
+/* Why shapes — subtle rotation */
+.why-shape-yellow {
+  transform-origin: center;
+}
+
+.why-shape-navy {
+  transform-origin: center;
+}
+
+.why-shape-yellow.shapes-active {
+  animation: shapeRotateSlow 20s linear infinite;
+}
+
+.why-shape-navy.shapes-active {
+  animation: ellipsePulse 3s ease-in-out infinite;
+}
+
+/* Learn-more arrow bounce */
+.learn-more .arrow {
+  animation: arrowBounce 1.5s ease-in-out infinite;
+}
+
+/* =============================================================
+   RESPONSIVE
+============================================================= */
+/* ── Intermediate: tablets / small laptops ─────────────────── */
+@media (max-width: 1200px) {
+  .hero-left {
+    padding: 220px 40px 80px 100px;
+  }
+
+  .hero-topbar {
+    padding: 0 60px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.4rem, 3.8vw, 3.4rem);
+  }
+
+  .hero-input {
+    min-width: 180px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero-right {
+    display: none;
+  }
+
+  .hero-left {
+    padding: 100px 40px 60px;
+  }
+
+  /* Topbar: tighter padding, button visible on white bg */
+  .hero-topbar {
+    padding: 0 40px;
+  }
+
+  .hero-top-button {
+    background: var(--blue);
+    color: var(--white);
+    border-color: var(--blue);
+    box-shadow: 0 6px 24px rgba(47, 85, 232, 0.35);
+  }
+
+  .hero-top-button:hover {
+    background: var(--blue-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(47, 85, 232, 0.45);
+  }
+
+  /* Why section: single column, centered */
+  .why {
+    grid-template-columns: 1fr;
+  }
+
+  .why-left {
+    min-height: 460px;
+    order: 2;
+  }
+
+  .why-right {
+    padding: 60px 40px;
+    order: 1;
+    align-items: center;
+    text-align: center;
+  }
+
+  .why-desc {
+    max-width: 100%;
+  }
+
+  .why-shape-main {
+    display: none;
+  }
+
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+  }
+
+  .navbar {
+    padding: 18px 32px;
+  }
+
+  .logos {
+    padding: 40px 20px;
+  }
+
+  .logos-track {
+    gap: 24px 32px;
+  }
+
+  .signup {
+    padding: 80px 40px;
+  }
+
+  .signup-shape {
+    display: none;
+  }
+
+  .footer {
+    padding: 24px 40px;
+  }
+
+  /* Signup form: stack and stretch full width */
+  .signup-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .signup-form>div {
+    flex: none !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100%;
+  }
+
+  .signup-input {
+    width: 100%;
+    min-width: 0;
+    max-width: 100% !important;
+    box-sizing: border-box;
+    border-radius: 12px;
+  }
+
+  .signup-form .btn-primary {
+    width: 100%;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-title {
+    font-size: clamp(2rem, 8vw, 2.6rem);
+    letter-spacing: -1px;
+  }
+
+  .hero-left {
+    padding: 90px 24px 48px;
+  }
+
+  /* Topbar */
+  .hero-topbar {
+    padding: 0 24px;
+  }
+
+  /* Form: stack vertically, full width */
+  .hero-form {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .hero-form>div {
+    width: 100%;
+  }
+
+  .hero-form .hero-input {
+    width: 100%;
+    min-width: 0;
+    border-radius: 12px;
+    box-sizing: border-box;
+  }
+
+  .hero-form .btn-primary {
+    width: 100%;
+    border-radius: 12px;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 28px;
+  }
+
+  .stats-row {
+    gap: 24px;
+  }
+
+  .benefits {
+    padding: 60px 20px;
+  }
+
+  .why-right {
+    padding: 50px 20px;
+  }
+
+  .why-left {
+    padding: 40px 20px;
+  }
+
+  .signup {
+    padding: 60px 20px;
+  }
+
+  .logos-track {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    justify-items: center;
+  }
+
+
+}

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="550" viewBox="0 0 500 550">
+
+  <!-- Mirror everything horizontally -->
+  <g transform="scale(-1,1) translate(-500,0)">
+
+    <!-- Yellow slanted bar (visible fully now) -->
+    <rect 
+      x="50" 
+      y="170" 
+      width="350" 
+      height="80" 
+      rx="40"
+      transform="rotate(-30 50 170)"
+      fill="#ffbc00"
+    />
+
+    <!-- Smaller & thicker ring -->
+    <circle 
+      cx="280" 
+      cy="320" 
+      r="100" 
+      fill="none" 
+      stroke="#3a4151" 
+      stroke-width="80"
+    />
+
+  </g>
+
+</svg>
