@@ -51,7 +51,7 @@ npm run preview
 
 | Command | Description |
 |---|---|
-| `npm run dev` | Start local dev server at `http://localhost:5173` |
+| `npm run dev` | Start dev server at `http://localhost:5173` (auto-reload) |
 | `npm run build` | Build for production into `dist/` |
 | `npm run preview` | Preview the production build locally |
 | `npm run lint` | Run ESLint |
